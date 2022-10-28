@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIme Tours Assignment</title>
+</head>
+<style>
+
+   body{
+    background-color: #F0EBCE;
+   }
+    input[type=text]{
+        width: 90%;
+    }
+    input[type=textarea]{
+        width: 100px;
+    }
+    .upper-container{
+        margin: auto;
+        width: 30%;
+        padding-top: 2.5rem;
+        padding-bottom: 4rem;
+    }
+    .lower-container{
+        border: 3px solid black;
+        width: 55%;
+        margin: auto;
+    }
+    p{
+        margin-left: 2.5rem;
+    }
+    .addbtn{
+        border: none;
+        margin-left: 20px;
+    }
+
+    .addbtn:hover{
+        color: grey;
+    }
+
+    .display-tags{
+        border: none;
+        border-bottom: 1px solid black;
+    }
+    .hob{
+        display: flex;
+
+    }
+    #newhobby{
+        border: none;
+        border-bottom: 1px solid black;
+        margin-left: 1px;
+    }
+    
+</style>
+<body>
+<div>
+    <div class="upper-container">
+        <table>
+            <tr>
+                <td><label for="name">Name:</label></td>
+                <td><input type="text" id="name" name="name" oninput="handleNameChange()"></td>
+            </tr>
+            <tr>
+                <td><label for="qualification">Qualification:</label></td>
+                <td><input type="text" id="qualification" name="qualification" oninput="handleQualification()"></td>
+            </tr>
+            <tr>
+                <td><label for="hobbies">Hobbies:</label></td>
+                <td><input type="text" id="hobbies" name="hobbies" oninput="handleHobbies()"></td>
+                <td><button onclick="handleClick()" class="addbtn" type="submit">+ Add Hobbies</button></td>
+            </tr>
+
+        </table>
+    </div>
+
+    <div class="lower-container">
+        <p>I, <input class= 'display-tags'  type="textarea" id="displayname">, would like to apply for an internship at your organisation.</p>
+        <p>My Qualification is <input class= 'display-tags'  type="textarea" id="displayqualification">.</p>
+        <div class="hob"><p id="hobbiespara">My hobbies are <input class= 'display-tags'  type="textarea" id="displayhobbies"></p> <p id="newhobby"></p></div>
+        <br><br>
+        <p>Thanking you,</p>
+        <p>Your Sincerely</p>
+        <p><input style="border: none;border-bottom: 1px solid black;" type="textarea" id="displaysign"></p>
+    </div>
+</div>
+
+<h3 style="text-align: center;">**You can Add as much Hobbies as you want**</h3>
+<script>
+
+    let name= document.getElementById('name');
+    let qualification = document.getElementById('qualification');
+    let hobbies = document.getElementById('hobbies');
+    let hobbiespara = document.getElementById('hobbiespara')
+    let newhobby = document.getElementById('newhobby')
+    let countButtonClicks = -1;
+    
+    let arr = [];
+
+    // handling Change
+
+    function handleNameChange(){
+       displayname.value=name.value;
+       displaysign.value=name.value;
+       console.log(name.value)
+    }
+
+    function handleQualification(){
+        displayqualification.value = qualification.value
+    }
+
+    function handleHobbies(){
+        if(countButtonClicks==-1){
+            displayhobbies.value = hobbies.value
+        }else{
+            hobbbis.value='';
+        }
+    }
+
+    function handleClick(){
+        const x=hobbies.value
+        let value= "";
+        countButtonClicks += 1;
+        arr[countButtonClicks-1]=x;
+        for(i=0;i<countButtonClicks-1;i++){
+            value=value+", "+arr[i];
+        }
+        if(i==countButtonClicks-1)
+        {
+            value=value+" & "+arr[i];
+        }
+        newhobby.innerHTML=value
+        value=""
+        hobbies.value=''
+    }
+
+</script>
+</body>
+</html>
